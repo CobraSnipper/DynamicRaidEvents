@@ -2,11 +2,27 @@
 
 public sealed class RaidEvent
 {
-    public required string Id { get; init; }
+    public RaidEvent(
+        string id,
+        string name,
+        string description,
+        int weight,
+        bool enabled = true)
+    {
+        Id = id;
+        Name = name;
+        Description = description;
+        Weight = weight;
+        Enabled = enabled;
+    }
 
-    public required string Name { get; init; }
+    public string Id { get; }
 
-    public required string Description { get; init; }
+    public string Name { get; }
 
-    public int Weight { get; init; } = 1;
+    public string Description { get; }
+
+    public int Weight { get; }
+
+    public bool Enabled { get; set; }
 }

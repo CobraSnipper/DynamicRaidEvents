@@ -20,7 +20,7 @@ public record ModMetadata : AbstractModMetadata
     public override List<string>? Contributors { get; init; }
 
     public override SemanticVersioning.Version Version { get; init; }
-        = new("0.0.2");
+        = new("0.0.3");
 
     public override SemanticVersioning.Range SptVersion { get; init; }
         = new("~4.0.0");
@@ -46,9 +46,9 @@ public sealed class DynamicRaidEventsMod(
     public Task OnLoad()
     {
         var raidDirector = new RaidDirector();
-        var selectedEvent = raidDirector.SelectRandomEvent();
+        var selectedEvent = raidDirector.SelectEvent();
 
-        logger.Success("[Dynamic Raid Events] v0.0.2 loaded successfully!");
+        logger.Success("[Dynamic Raid Events] v0.0.3 loaded successfully!");
         logger.Info($"[Dynamic Raid Events] Event selected: {selectedEvent.Name}");
         logger.Info($"[Dynamic Raid Events] Description: {selectedEvent.Description}");
 
