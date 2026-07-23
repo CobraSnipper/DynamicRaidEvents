@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.0.4
+
+- Added DynamicRaidEventsConfig
+- Added ConfigManager
+- Added automatic config.json creation
+- Added mod enable/disable setting
+- Added configurable event chance setting
+- Added invalid JSON recovery
+- Configuration is stored beside the mod DLL
+
 ## v0.0.3
 
 - Added EventRegistry

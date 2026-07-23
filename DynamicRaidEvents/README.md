@@ -1,3 +1,10 @@
+- Automatic config.json creation
+- Configurable mod enable/disable setting
+- Configurable event chance setting
+- Invalid configuration recovery
+
+v0.0.4
+
 # Dynamic Raid Events
 
 Dynamic Raid Events is a server-side mod for **SPT 4.x** that makes every raid unique by selecting random gameplay events.
