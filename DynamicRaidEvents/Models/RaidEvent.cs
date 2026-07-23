@@ -1,8 +1,8 @@
 ﻿namespace DynamicRaidEvents.Models;
 
-public sealed class RaidEvent
+public abstract class RaidEvent
 {
-    public RaidEvent(
+    protected RaidEvent(
         string id,
         string name,
         string description,

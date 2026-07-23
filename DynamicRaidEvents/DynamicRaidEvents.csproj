@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
-		<Version>0.0.5</Version>
+		<Version>0.0.6</Version>
 
 		<OutputPath>bin\$(Configuration)\$(ProjectName)\$(AssemblyName)\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -19,7 +19,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Events\" />
 		<Folder Include="Utilities\" />
 	</ItemGroup>
 

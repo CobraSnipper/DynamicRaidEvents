@@ -1,3 +1,7 @@
+- Modular event architecture with separate classes for each raid event
+
+## Added
+v0.0.6
 
 - Configurable special-event chance from 0% to 100%
 - Weighted selection between enabled special events

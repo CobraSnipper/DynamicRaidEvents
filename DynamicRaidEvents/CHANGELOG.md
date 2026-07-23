@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.6
+
+- Converted RaidEvent into an abstract base class
+- Added individual event classes
+- Added NormalRaidEvent
+- Added BossHuntEvent
+- Added BossConventionEvent
+- Added LootSurgeEvent
+- Simplified EventRegistry
+- Preserved existing weighted event-selection behavior
+
+
 ## v0.0.5
 
 - Connected EventChance to raid event selection
