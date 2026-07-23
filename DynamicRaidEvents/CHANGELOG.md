@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.0.7
+
+- Added `IRaidEvent` interface
+- Added `RaidContext`
+- Added event execution through `Apply()`
+- Events now execute their own behavior
+- Decoupled event execution from `RaidDirector`
+- Improved framework for future gameplay events
+
 ## v0.0.6
 
 - Converted RaidEvent into an abstract base class

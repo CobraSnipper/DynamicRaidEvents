@@ -12,4 +12,10 @@ public sealed class LootSurgeEvent : RaidEvent
             weight: 15)
     {
     }
+
+    public override void Apply(RaidContext context)
+    {
+        context.LogInfo(
+            "[Dynamic Raid Events] Applying Loot Surge...");
+    }
 }

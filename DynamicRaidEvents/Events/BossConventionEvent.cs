@@ -12,4 +12,10 @@ public sealed class BossConventionEvent : RaidEvent
             weight: 10)
     {
     }
+
+    public override void Apply(RaidContext context)
+    {
+        context.LogInfo(
+            "[Dynamic Raid Events] Applying Boss Convention...");
+    }
 }

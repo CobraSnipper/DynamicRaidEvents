@@ -1,6 +1,6 @@
 ﻿namespace DynamicRaidEvents.Models;
 
-public abstract class RaidEvent
+public abstract class RaidEvent : IRaidEvent
 {
     protected RaidEvent(
         string id,
@@ -25,4 +25,8 @@ public abstract class RaidEvent
     public int Weight { get; }
 
     public bool Enabled { get; set; }
+
+    public virtual void Apply(RaidContext context)
+    {
+    }
 }

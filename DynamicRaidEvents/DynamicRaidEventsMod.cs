@@ -1,9 +1,10 @@
 ﻿using DynamicRaidEvents.Core;
+using DynamicRaidEvents.Managers;
 using SPTarkov.DI.Annotations;
 using SPTarkov.Server.Core.DI;
 using SPTarkov.Server.Core.Models.Spt.Mod;
 using SPTarkov.Server.Core.Models.Utils;
-using DynamicRaidEvents.Managers;
+using DynamicRaidEvents.Models;
 
 namespace DynamicRaidEvents;
 
@@ -21,7 +22,7 @@ public record ModMetadata : AbstractModMetadata
     public override List<string>? Contributors { get; init; }
 
     public override SemanticVersioning.Version Version { get; init; }
-        = new("0.0.6");
+        = new("0.0.7");
 
     public override SemanticVersioning.Range SptVersion { get; init; }
         = new("~4.0.0");
@@ -49,7 +50,7 @@ public sealed class DynamicRaidEventsMod(
         var configManager = new ConfigManager();
         configManager.Load();
 
-        logger.Success("[Dynamic Raid Events] v0.0.6 loaded successfully!");
+        logger.Success("[Dynamic Raid Events] v0.0.7 loaded successfully!");
         logger.Info($"[Dynamic Raid Events] Configuration loaded. Enabled: {configManager.Config.Enabled}, Event chance: {configManager.Config.EventChance}%");
 
         if (!configManager.Config.Enabled)
@@ -59,7 +60,16 @@ public sealed class DynamicRaidEventsMod(
         }
 
         var raidDirector = new RaidDirector();
-        var selectedEvent = raidDirector.SelectEvent(configManager.Config.EventChance);
+
+        var selectedEvent =
+            raidDirector.SelectEvent(configManager.Config.EventChance);
+
+        var context = new RaidContext
+        {
+            LogInfo = message => logger.Info(message)
+        };
+
+        selectedEvent.Apply(context);
 
         logger.Info($"[Dynamic Raid Events] Event selected: {selectedEvent.Name}");
         logger.Info($"[Dynamic Raid Events] Description: {selectedEvent.Description}");

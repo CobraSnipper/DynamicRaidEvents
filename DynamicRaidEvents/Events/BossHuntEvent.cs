@@ -12,4 +12,10 @@ public sealed class BossHuntEvent : RaidEvent
             weight: 25)
     {
     }
+
+    public override void Apply(RaidContext context)
+    {
+        context.LogInfo(
+            "[Dynamic Raid Events] Applying Boss Hunt...");
+    }
 }
