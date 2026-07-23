@@ -1,3 +1,9 @@
+
+- Configurable special-event chance from 0% to 100%
+- Weighted selection between enabled special events
+
+v0.0.5
+
 - Automatic config.json creation
 - Configurable mod enable/disable setting
 - Configurable event chance setting

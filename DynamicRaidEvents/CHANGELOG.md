@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.0.5
+
+- Connected EventChance to raid event selection
+- Added 0–100 configuration value clamping
+- Normal Raid is selected when the event roll fails
+- Special events are selected using weighted random selection
+- Normal Raid is excluded from the special-event pool
+- Added fallback behavior when no valid special events are available
+
 ## v0.0.4
 
 - Added DynamicRaidEventsConfig

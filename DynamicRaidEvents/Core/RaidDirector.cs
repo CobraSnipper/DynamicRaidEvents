@@ -11,31 +11,53 @@ public sealed class RaidDirector
         events = EventRegistry.GetEvents();
     }
 
-    public RaidEvent SelectEvent()
+    public RaidEvent SelectEvent(int eventChance)
     {
-        var enabledEvents = events
-            .Where(raidEvent => raidEvent.Enabled && raidEvent.Weight > 0)
-            .ToList();
+        eventChance = Math.Clamp(eventChance, 0, 100);
 
-        if (enabledEvents.Count == 0)
+        var normalRaid = events.FirstOrDefault(
+            raidEvent => raidEvent.Id == "normal");
+
+        if (normalRaid is null)
         {
             throw new InvalidOperationException(
-                "No enabled raid events with a positive weight were found.");
+                "The Normal Raid event is missing from EventRegistry.");
         }
 
-        var totalWeight = enabledEvents.Sum(raidEvent => raidEvent.Weight);
-        var roll = Random.Shared.Next(totalWeight);
+        var eventRoll = Random.Shared.Next(1, 101);
 
-        foreach (var raidEvent in enabledEvents)
+        if (eventRoll > eventChance)
         {
-            if (roll < raidEvent.Weight)
+            return normalRaid;
+        }
+
+        var specialEvents = events
+            .Where(raidEvent =>
+                raidEvent.Enabled &&
+                raidEvent.Weight > 0 &&
+                raidEvent.Id != "normal")
+            .ToList();
+
+        if (specialEvents.Count == 0)
+        {
+            return normalRaid;
+        }
+
+        var totalWeight = specialEvents.Sum(
+            raidEvent => raidEvent.Weight);
+
+        var weightedRoll = Random.Shared.Next(totalWeight);
+
+        foreach (var raidEvent in specialEvents)
+        {
+            if (weightedRoll < raidEvent.Weight)
             {
                 return raidEvent;
             }
 
-            roll -= raidEvent.Weight;
+            weightedRoll -= raidEvent.Weight;
         }
 
-        return enabledEvents[^1];
+        return specialEvents[^1];
     }
 }
